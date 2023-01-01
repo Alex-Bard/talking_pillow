@@ -22,9 +22,9 @@ public class Game implements IGame{
         this.gameManager = gameManager;
         this.players = new HashMap<>(players);
         for (Map.Entry<Member, IPlayer> playerEntry : this.players.entrySet()){
-            playerEntry.getValue().setStatus(EPlayerStatusType.NOT_READY);
+            playerEntry.getValue().setOutGameStatus(EPlayerStatusType.NOT_READY);
         }
-        this.owner.setStatus(EPlayerStatusType.NOT_READY);
+        this.owner.setOutGameStatus(EPlayerStatusType.NOT_READY);
 
     }
     @Override
@@ -36,7 +36,7 @@ public class Game implements IGame{
     }
     @Override
     public void initGame(){
-        this.owner.setStatus(EPlayerStatusType.READY);
+        this.owner.setOutGameStatus(EPlayerStatusType.READY);
         this.gameStatus = EGameStatusType.PENDING;
         //todo add start timer
     }

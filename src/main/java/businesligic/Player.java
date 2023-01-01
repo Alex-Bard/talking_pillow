@@ -9,15 +9,9 @@ public class Player implements IPlayer{
     private EPlayerStatusType inGameStatus;
     private EPlayerStatusType outGameStatus;
 
-    public Player(Member member, EPlayerStatusType status) {
-        this.member = member;
-        this.status = status;
-    }
     public Player(Member member) {
         this.member = member;
     }
-
-
     @Override
     public Member getMember() {
         return this.member;
