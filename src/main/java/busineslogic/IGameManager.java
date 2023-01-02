@@ -1,11 +1,10 @@
-package businesligic;
+package busineslogic;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 
-import java.util.List;
 import java.util.Map;
 
 public interface IGameManager {

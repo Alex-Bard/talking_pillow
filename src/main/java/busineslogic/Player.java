@@ -1,10 +1,10 @@
-package businesligic;
+package busineslogic;
 import net.dv8tion.jda.api.entities.Member;
 
 import java.util.Objects;
 
 public class Player implements IPlayer{
-    private final Member member;
+    private  Member member;
     private EPlayerStatusType inGameStatus;
     private EPlayerStatusType outGameStatus;
 
@@ -14,6 +14,9 @@ public class Player implements IPlayer{
     @Override
     public Member getMember() {
         return this.member;
+    }
+    public void setMember(Member member){
+        this.member = member;
     }
     @Override
     public EPlayerStatusType getInGameStatus() {

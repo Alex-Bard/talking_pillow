@@ -1,11 +1,10 @@
 package Listeners;
 
-import businesligic.GameFacade;
-import businesligic.IGameFacade;
+import busineslogic.GameFacade;
+import busineslogic.IGameFacade;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;

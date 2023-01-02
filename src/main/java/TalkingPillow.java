@@ -1,19 +1,9 @@
 import Listeners.MassageListener;
-import businesligic.GameManager;
-import businesligic.IGameManager;
+import busineslogic.GameManager;
+import busineslogic.IGameManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
-import net.dv8tion.jda.api.Permission;
-import net.dv8tion.jda.api.entities.Activity;
-import net.dv8tion.jda.api.events.interaction.command.SlashCommandInteractionEvent;
-import net.dv8tion.jda.api.hooks.ListenerAdapter;
-import net.dv8tion.jda.api.interactions.commands.DefaultMemberPermissions;
-import net.dv8tion.jda.api.interactions.commands.build.Commands;
 import net.dv8tion.jda.api.requests.GatewayIntent;
-
-import java.util.Collections;
-
-import static net.dv8tion.jda.api.entities.Activity.*;
 
 public class TalkingPillow {
     private static final String BOT_TOKEN = "MTA1NzM3ODQzNTg3OTY3ODAyMw.GGvTVf.t5oawXwiXmXSpJ7w73KrYsAsiOUbNeB8Xbsb2w";

@@ -1,4 +1,4 @@
-package businesligic;
+package busineslogic;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
@@ -25,11 +25,14 @@ public class Game implements IGame{
         this.messageChannel = messageChannel;
         this.gameManager = gameManager;
         this.players = new HashMap<>(players);
+        this.owner = owner;
+        initPlayersStatuses();
+    }
+    protected void initPlayersStatuses(){
         for (Map.Entry<Member, IPlayer> playerEntry : this.players.entrySet()){
             playerEntry.getValue().setOutGameStatus(EPlayerStatusType.NOT_READY);
         }
         this.owner.setOutGameStatus(EPlayerStatusType.NOT_READY);
-
     }
     @Override
     public void addPlayer(@NotNull IPlayer player){
@@ -80,7 +83,7 @@ public class Game implements IGame{
         gameManager.markGameNotActual(this);
 
     }
-    private void startGame(){
+    protected void startGame(){
         gameStatus = EGameStatusType.GOING;
         for (Map.Entry<Member, IPlayer> player : players.entrySet()){
             player.getValue().setInGameStatus(EPlayerStatusType.LISTEN);
@@ -92,11 +95,11 @@ public class Game implements IGame{
     }
     @Override
     public void requestPillow(IPlayer who){
-        players.get(who.getMember()).setInGameStatus(EPlayerStatusType.WAIT_PILLOW);
+        getPlayers().get(who.getMember()).setInGameStatus(EPlayerStatusType.WAIT_PILLOW);
     }
     @Override
     public void resetRequestPillow(IPlayer who){
-        players.get(who.getMember()).setInGameStatus(EPlayerStatusType.LISTEN);
+        getPlayers().get(who.getMember()).setInGameStatus(EPlayerStatusType.LISTEN);
     }
     @Override
     public void acceptPillowRequest(IPlayer who, IPlayer toWhom) throws IllegalStateException{
@@ -126,25 +129,13 @@ public class Game implements IGame{
     private boolean isPlayerExists(IPlayer player){
         return players.containsKey(player.getMember()) || owner.getMember().equals(player.getMember());
     }
-    private IPlayer getPlayer(IPlayer player) throws IllegalStateException{
-        if (players.containsKey(player.getMember())){
-            return players.get(player.getMember());
-        }
-        else if (owner.equals(player.getMember())){
-            return owner;
-        }
-        else {
-            throw new IllegalStateException("player not exists");
-        }
-    }
-    private boolean checkCanStart(){
+    protected boolean checkCanStart(){
         return gameStatus == EGameStatusType.PENDING
-                && players.size() == getNumOfStatuses(EPlayerStatusType.READY)
-                && owner.getOutGameStatus() == EPlayerStatusType.READY;
+                && getPlayers().size() == getNumOfStatuses(EPlayerStatusType.READY);
     }
-    private int getNumOfStatuses(EPlayerStatusType Status){
+    protected int getNumOfStatuses(EPlayerStatusType Status){
         int count = 0;
-        for (Map.Entry<Member,IPlayer> player : this.players.entrySet()){
+        for (Map.Entry<Member,IPlayer> player : getPlayers().entrySet()){
             if (player.getValue().getOutGameStatus() == Status){
                 count++;
             }
@@ -162,7 +153,17 @@ public class Game implements IGame{
         res.put(owner.getMember(), owner);
         return res;
     }
-
+    private IPlayer getPlayer(IPlayer player) throws IllegalStateException{
+        if (players.containsKey(player.getMember())){
+            return players.get(player.getMember());
+        }
+        else if (owner.equals(player.getMember())){
+            return owner;
+        }
+        else {
+            throw new IllegalStateException("player not exists");
+        }
+    }
 
     @Override
     public IPlayer getTalker() {

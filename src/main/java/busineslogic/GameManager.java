@@ -1,4 +1,4 @@
-package businesligic;
+package busineslogic;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
@@ -25,7 +25,7 @@ public class GameManager implements IGameManager {
         }
         return instance;
     }
-    private GameManager (){
+    protected GameManager (){
         this.actualGames = new HashedMap<>();
         this.historyGames = new LinkedList<>();
     }
@@ -56,11 +56,14 @@ public class GameManager implements IGameManager {
             print(messageChannel, "game is already on!");
             return;
         }
+        if (players.size() == 0){
+            print(messageChannel, "You need at least 2 players to start the game");
+            return;
+        }
         IGame game = new Game(this, owner, players, guild, channel,messageChannel);
         game.initGame();
         this.actualGames.put(guild, game);
-        //todo add view
-        //todo add handler if owner is only one in chat
+        print(messageChannel, "Игра создана. Ожидается подтверждение других игроков!");
 
     }
 
