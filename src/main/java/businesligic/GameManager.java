@@ -2,8 +2,11 @@ package businesligic;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 import org.apache.commons.collections4.map.HashedMap;
+import view.IMicrophoneManager;
+import view.MicrophoneManager;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -11,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 public class GameManager implements IGameManager {
+    private IMicrophoneManager microphoneManager = MicrophoneManager.getInstance();
     private Map<Guild,IGame> actualGames;
     private List<IGame> historyGames;
     private static GameManager instance;
@@ -31,21 +35,28 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void startGameForcibly(Guild guild, AudioChannelUnion channel, IPlayer owner,
-                                  Map<Member, IPlayer> players) throws IllegalStateException {
-        startGame(guild, channel,owner,players);
-        for (Map.Entry<Member,IPlayer> player : players.entrySet()){
-            acceptGame(guild, channel, player.getValue());
+    public void startGameForcibly(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel, IPlayer owner,
+                                  Map<Member, IPlayer> players){
+        try {
+            startGame(guild, channel, messageChannel, owner, players);
+            for (Map.Entry<Member,IPlayer> player : players.entrySet()){
+                acceptGame(guild, channel, messageChannel, player.getValue());
+            }
         }
+        catch (IllegalStateException e){
+            print(messageChannel, e.getMessage());
+        }
+
     }
 
     @Override
-    public void startGame(Guild guild, AudioChannelUnion channel,
-                          IPlayer owner, Map<Member, IPlayer> players) throws IllegalStateException {
+    public void startGame(Guild guild, AudioChannelUnion channel,  MessageChannel messageChannel,
+                          IPlayer owner, Map<Member, IPlayer> players){
         if (actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game is already on");
+            print(messageChannel, "game is already on!");
+            return;
         }
-        IGame game = new Game(this, owner, players, guild, channel);
+        IGame game = new Game(this, owner, players, guild, channel,messageChannel);
         game.initGame();
         this.actualGames.put(guild, game);
         //todo add view
@@ -66,83 +77,102 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void print(String text) {
-
+    public void print(MessageChannel messageChannel, String text) {
+        messageChannel.sendMessage(text).queue();
     }
 
     @Override
-    public void voteForStop(Guild guild, AudioChannelUnion channel, IPlayer player) throws IllegalStateException {
+    public void voteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel, IPlayer player){
         if (!actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game not found");
+            print(messageChannel, "Game not found");
+            return;
         }
         if (!actualGames.get(guild).getPlayers().containsKey(player.getMember())){
-            throw new IllegalStateException("player must be a game member to perform this action");
+            print(messageChannel, "player must be a game member to perform this action");
+            return;
         }
 
         this.actualGames.get(guild).voteForStop(player);
-        //todo add view
+        print(messageChannel, "" + player.getMember().getNickname() + " проголосовал за завершение игры!");
     }
     @Override
-    public void resetVoteForStop(Guild guild, AudioChannelUnion channel, IPlayer whoVoted) throws IllegalStateException{
+    public void resetVoteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                                 IPlayer whoVoted){
         if (!actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game not found");
+            print(messageChannel, "Game not found");
+            return;
         }
         if (!actualGames.get(guild).getPlayers().containsKey(whoVoted.getMember())){
-            throw new IllegalStateException("player must be a game member to perform this action");
+            print(messageChannel, "player must be a game member to perform this action");
+            return;
         }
 
         this.actualGames.get(guild).resetVoteForStop(whoVoted);
-        //todo add view
+        print(messageChannel, "" + whoVoted.getMember().getNickname() + " отменил голос за завершение игры!");
+
     }
     @Override
-    public void acceptGame(Guild guild, AudioChannelUnion channel, IPlayer whoAccept) throws IllegalStateException{
+    public void acceptGame(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel, IPlayer whoAccept){
         if (!actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game not found");
+            print(messageChannel, "Game not found");
+            return;
         }
-        if (!actualGames.get(guild).getPlayers().containsKey(whoAccept)){
-            throw new IllegalStateException("player must be a game member to perform this action");
+        if (!actualGames.get(guild).getPlayers().containsKey(whoAccept.getMember())){
+            print(messageChannel, "player must be a game member to perform this action");
+            return;
         }
         this.actualGames.get(guild).acceptGame(whoAccept);
-        //todo add view
+        print(messageChannel, "" + whoAccept.getMember().getNickname() + " выразил готовность!");
+
     }
     @Override
-    public void requestPillow(Guild guild, AudioChannelUnion channel, IPlayer whoRequest){
+    public void requestPillow(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                              IPlayer whoRequest){
         if (!actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game not found");
+            print(messageChannel, "Game not found");
+            return;
         }
-        if (!actualGames.get(guild).getPlayers().containsKey(whoRequest)){
-            throw new IllegalStateException("player must be a game member to perform this action");
+        if (!actualGames.get(guild).getPlayers().containsKey(whoRequest.getMember())){
+            print(messageChannel, "player must be a game member to perform this action");
+            return;
         }
         this.actualGames.get(guild).requestPillow(whoRequest);
-        //todo add view
+        print(messageChannel, "" + whoRequest.getMember().getNickname() + " имеет что сказать!");
     }
     @Override
-    public void resetRequestPillow(Guild guild, AudioChannelUnion channel, IPlayer whoRequest){
+    public void resetRequestPillow(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                                   IPlayer whoRequest){
         if (!actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game not found");
+            print(messageChannel, "Game not found");
+            return;
         }
-        if (!actualGames.get(guild).getPlayers().containsKey(whoRequest)){
-            throw new IllegalStateException("player must be a game member to perform this action");
+        if (!actualGames.get(guild).getPlayers().containsKey(whoRequest.getMember())){
+            print(messageChannel, "player must be a game member to perform this action");
+            return;
         }
         this.actualGames.get(guild).resetRequestPillow(whoRequest);
-        //todo add view
+        print(messageChannel, "" + whoRequest.getMember().getNickname() + " проглотил язык!");
     }
     @Override
-    public void acceptPillowRequest(Guild guild, AudioChannelUnion channel, IPlayer Who, IPlayer ToWhom){
+    public void acceptPillowRequest(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                                    IPlayer Who, IPlayer ToWhom){
         if (!actualGames.containsKey(guild)){
-            throw new IllegalStateException("Game not found");
+            print(messageChannel, "Game not found");
+            return;
         }
-        if (!actualGames.get(guild).getPlayers().containsKey(Who)
-                && !actualGames.get(guild).getPlayers().containsKey(ToWhom)){
-            throw new IllegalStateException("player must be a game member to perform this action");
+        if (!actualGames.get(guild).getPlayers().containsKey(Who.getMember())
+                && !actualGames.get(guild).getPlayers().containsKey(ToWhom.getMember())){
+            print(messageChannel, "player must be a game member to perform this action");
+            return;
         }
         this.actualGames.get(guild).acceptPillowRequest(Who, ToWhom);
-        //todo add view
+        print(messageChannel, "" + Who.getMember().getNickname() + " передает подушку игроку "
+                + ToWhom.getMember().getNickname());
     }
 
     @Override
     public void changeMicrophoneStatuses(Map<Member, Boolean> micStatuses) {
-
+        microphoneManager.changeMicrophoneStatuses(micStatuses);
     }
     @Override
     public void markGameNotActual(IGame game) {

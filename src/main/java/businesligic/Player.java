@@ -1,5 +1,4 @@
 package businesligic;
-
 import net.dv8tion.jda.api.entities.Member;
 
 import java.util.Objects;

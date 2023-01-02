@@ -2,6 +2,7 @@ package businesligic;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 import org.jetbrains.annotations.NotNull;
 
@@ -12,13 +13,16 @@ public class Game implements IGame{
     private IPlayer owner;
     private Map<Member, IPlayer> players;
     private Guild guild;
+    private MessageChannel messageChannel;
     private AudioChannelUnion channel;
     private EGameStatusType gameStatus;
     private IGameManager gameManager;
 
-    public Game(IGameManager gameManager, IPlayer owner, Map<Member, IPlayer> players, Guild guild, AudioChannelUnion channel) {
+    public Game(IGameManager gameManager, IPlayer owner, Map<Member, IPlayer> players, Guild guild,
+                AudioChannelUnion channel, MessageChannel messageChannel) {
         this.guild = guild;
         this.channel = channel;
+        this.messageChannel = messageChannel;
         this.gameManager = gameManager;
         this.players = new HashMap<>(players);
         for (Map.Entry<Member, IPlayer> playerEntry : this.players.entrySet()){
@@ -43,7 +47,7 @@ public class Game implements IGame{
     @Override
     public void acceptGame(IPlayer whoAccept){
         if (this.gameStatus == EGameStatusType.DENIED){
-            this.gameManager.print("Игра отклонена");
+            this.gameManager.print(messageChannel,"Игра отклонена");
             return;
         }
         else if(this.gameStatus == EGameStatusType.PENDING){
@@ -72,7 +76,7 @@ public class Game implements IGame{
             player.getValue().setInGameStatus(EPlayerStatusType.LISTEN);
         }
         gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-        gameManager.print("Игра закончена!");
+        gameManager.print(messageChannel, "Игра закончена!");
         gameManager.markGameNotActual(this);
 
     }
@@ -83,8 +87,8 @@ public class Game implements IGame{
         }
         owner.setInGameStatus(EPlayerStatusType.TALKING);
         gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-        gameManager.print("Игра началась!");
-        gameManager.print("Подушка у " + owner.getMember().getNickname() + "!");
+        gameManager.print(messageChannel, "Игра началась!");
+        gameManager.print(messageChannel, "Подушка у " + owner.getMember().getNickname() + "!");
     }
     @Override
     public void requestPillow(IPlayer who){
@@ -106,7 +110,7 @@ public class Game implements IGame{
         getPlayer(who).setInGameStatus(EPlayerStatusType.LISTEN);
         getPlayer(toWhom).setInGameStatus(EPlayerStatusType.TALKING);
         gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-        gameManager.print("" + who.getMember().getNickname()
+        gameManager.print(messageChannel, "" + who.getMember().getNickname()
                 + " передает подушку " + toWhom.getMember().getNickname());
     }
     private Map<Member, Boolean> getMicrophoneStatuses(){

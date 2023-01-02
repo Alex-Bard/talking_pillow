@@ -2,20 +2,24 @@ package businesligic;
 
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 
 public interface IGameFacade {
-    void startGame(Guild guild, AudioChannelUnion channel, Member owner);
 
-    void voteForStop(Guild guild, AudioChannelUnion channel, Member whoVoted);
+    void startGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner);
 
-    void resetVoteForStop(Guild guild, AudioChannelUnion channel, Member whoVoted);
+    void voteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                     Member whoVoted);
+    void resetVoteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                          Member whoVoted);
 
-    void acceptGame(Guild guild, AudioChannelUnion channel, Member whoAccept);
-
-    void requestPillow(Guild guild, AudioChannelUnion channel, Member whoRequest);
-
-    void resetRequestPillow(Guild guild, AudioChannelUnion channel, Member whoRequest);
-
-    void acceptPillowRequest(Guild guild, AudioChannelUnion channel, Member who, Member toWhom);
+    void acceptGame(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                    Member whoAccept);
+    void requestPillow(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                       Member whoRequest);
+    void resetRequestPillow(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                            Member whoRequest);
+    void acceptPillowRequest(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                             Member who, Member toWhom);
 }
