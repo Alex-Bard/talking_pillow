@@ -3,6 +3,8 @@ package busineslogic;
 import net.dv8tion.jda.api.entities.Member;
 
 public interface IPlayer {
+    String getName();
+
     Member getMember();
     EPlayerStatusType getInGameStatus();
 

@@ -66,15 +66,15 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void connectUserToChannel(Guild guild, AudioChannelUnion channel, Member member)
+    public void connectUserToChannel(Guild guild, AudioChannelUnion channel, IPlayer player)
             throws IllegalStateException {
         Map<Member, Boolean> playerMicStatuses;
         if (actualGames.containsKey(guild)) {
-            actualGames.get(guild).addPlayer(new Player(member));
+            actualGames.get(guild).addPlayer(player);
             playerMicStatuses = actualGames.get(guild).getMicrophoneStatuses();
         } else {
             playerMicStatuses = new HashMap<>();
-            playerMicStatuses.put(member, true);
+            playerMicStatuses.put(player.getMember(), true);
         }
         changeMicrophoneStatuses(playerMicStatuses);
     }
@@ -97,7 +97,7 @@ public class GameManager implements IGameManager {
         }
         IGame game = this.actualGames.get(guild);
         game.voteForStop(player);
-        print(messageChannel, "" + player.getMember().getNickname() + " проголосовал за завершение игры!");
+        print(messageChannel, "" + player.getName() + " проголосовал за завершение игры!");
         print(messageChannel, "хотят закончить " + game.getNumOfStatuses(EPlayerStatusType.WAITING_COMPLETION)
                 + " игроков из " + game.getPlayers().size());
         if (game.getGameStatus() == EGameStatusType.ENDED) {
@@ -120,7 +120,7 @@ public class GameManager implements IGameManager {
         }
 
         this.actualGames.get(guild).resetVoteForStop(whoVoted);
-        print(messageChannel, "" + whoVoted.getMember().getNickname() + " отменил голос за завершение игры!");
+        print(messageChannel, "" + whoVoted.getName() + " отменил голос за завершение игры!");
 
     }
 
@@ -137,12 +137,12 @@ public class GameManager implements IGameManager {
         }
         IGame game = this.actualGames.get(guild);
         game.acceptGame(whoAccept);
-        print(messageChannel, "" + whoAccept.getMember().getNickname() + " выразил готовность!");
+        print(messageChannel, "" + whoAccept.getName() + " выразил готовность!");
         print(messageChannel, "готовы " + game.getNumOfStatuses(EPlayerStatusType.READY)
                 + " игроков из " + game.getPlayers().size());
         if (game.getGameStatus() == EGameStatusType.GOING) {
             print(messageChannel, "Игра началась!");
-            print(messageChannel, "Подушка у " + game.getTalker().getMember().getNickname() + "!");
+            print(messageChannel, "Подушка у " + game.getTalker().getName() + "!");
         }
         changeMicrophoneStatuses(game.getMicrophoneStatuses());
     }
@@ -161,10 +161,10 @@ public class GameManager implements IGameManager {
         IGame game = this.actualGames.get(guild);
         if (game.canRequestPillow(whoRequest)){
             game.requestPillow(whoRequest);
-            print(messageChannel, "" + whoRequest.getMember().getNickname() + " имеет что сказать!");
+            print(messageChannel, "" + whoRequest.getName() + " имеет что сказать!");
         }
         else {
-            print(messageChannel, "" + whoRequest.getMember().getNickname() + ", вы не можете запросить подушку!");
+            print(messageChannel, "" + whoRequest.getName() + ", вы не можете запросить подушку!");
         }
     }
 
@@ -180,7 +180,7 @@ public class GameManager implements IGameManager {
             return;
         }
         this.actualGames.get(guild).resetRequestPillow(whoRequest);
-        print(messageChannel, "" + whoRequest.getMember().getNickname() + " проглотил язык!");
+        print(messageChannel, "" + whoRequest.getName() + " проглотил язык!");
     }
 
     @Override
@@ -198,8 +198,8 @@ public class GameManager implements IGameManager {
         IGame game =  this.actualGames.get(guild);
         if (game.canAcceptPillowRec(who, toWhom)){
             this.actualGames.get(guild).acceptPillowRequest(who, toWhom);
-            print(messageChannel, "" + who.getMember().getNickname() + " передает подушку игроку "
-                    + toWhom.getMember().getNickname());
+            print(messageChannel, "" + who.getName() + " передает подушку игроку "
+                    + toWhom.getName());
         }
         else {
             print(messageChannel, "вы не можете передать подушку!");

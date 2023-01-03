@@ -7,9 +7,15 @@ public class Player implements IPlayer{
     private  Member member;
     private EPlayerStatusType inGameStatus;
     private EPlayerStatusType outGameStatus;
+    private String name;
 
-    public Player(Member member) {
+    @Override
+    public String getName() {
+        return name;
+    }
+    public Player(Member member, String name) {
         this.member = member;
+        this.name = name;
     }
     @Override
     public Member getMember() {

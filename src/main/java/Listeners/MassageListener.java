@@ -55,7 +55,7 @@ public class MassageListener  extends ListenerAdapter {
             } else if (content.contains("!acceptRec") && message.getMentions().getMembers().size() == 1) {
                 AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
                 Member toWhom = message.getMentions().getMembers().get(0);
-                gameFacade.acceptPillowRequest(guild, audioChannel, event.getChannel(), toWhom, member);
+                gameFacade.acceptPillowRequest(guild, audioChannel, event.getChannel(), member, toWhom);
                 event.getMember().deafen(false).queue();
             }
         }

@@ -17,7 +17,8 @@ public interface IGameManager {
                    IPlayer owner, Map<Member, IPlayer> players) throws IllegalStateException;
 
     //always check users connecting to avoid problems with mute.
-    void connectUserToChannel(Guild guild, AudioChannelUnion channel, Member member);
+    void connectUserToChannel(Guild guild, AudioChannelUnion channel, IPlayer player)
+            throws IllegalStateException;
 
     void print(MessageChannel messageChannel, String text);
 

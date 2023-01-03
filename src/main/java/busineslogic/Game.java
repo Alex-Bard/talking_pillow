@@ -99,8 +99,8 @@ public class Game implements IGame{
     }
     @Override
     public boolean canAcceptPillowRec(IPlayer who, IPlayer toWhom){
-        return getPlayer(who).getInGameStatus() != EPlayerStatusType.TALKING
-                && getPlayer(toWhom).getInGameStatus() != EPlayerStatusType.WAIT_PILLOW;
+        return getPlayer(who).getInGameStatus() == EPlayerStatusType.TALKING
+                && getPlayer(toWhom).getInGameStatus() == EPlayerStatusType.WAIT_PILLOW;
     }
     @Override
     public void acceptPillowRequest(IPlayer who, IPlayer toWhom) throws IllegalStateException{
@@ -154,7 +154,7 @@ public class Game implements IGame{
         if (players.containsKey(player.getMember())){
             return players.get(player.getMember());
         }
-        else if (owner.equals(player.getMember())){
+        else if (owner.getMember().equals(player.getMember())){
             return owner;
         }
         else {
