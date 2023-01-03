@@ -74,9 +74,9 @@ public class Game implements IGame{
     }
     private void stopGame(){
         gameStatus = EGameStatusType.ENDED;
-        owner.setInGameStatus(EPlayerStatusType.LISTEN);
+        owner.setInGameStatus(EPlayerStatusType.TALKING);
         for (Map.Entry<Member,IPlayer> player : players.entrySet()){
-            player.getValue().setInGameStatus(EPlayerStatusType.LISTEN);
+            player.getValue().setInGameStatus(EPlayerStatusType.TALKING);
         }
         gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
         gameManager.print(messageChannel, "Игра закончена!");

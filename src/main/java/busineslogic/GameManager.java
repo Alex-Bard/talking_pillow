@@ -61,7 +61,15 @@ public class GameManager implements IGameManager {
             return;
         }
         IGame game = new Game(this, owner, players, guild, channel,messageChannel);
-        game.initGame();
+
+        try {
+            game.initGame();
+        }
+        catch (IllegalStateException e){
+            print(messageChannel, e.getMessage());
+            return;
+        }
+
         this.actualGames.put(guild, game);
         print(messageChannel, "Игра создана. Ожидается подтверждение других игроков!");
 
@@ -168,7 +176,14 @@ public class GameManager implements IGameManager {
             print(messageChannel, "player must be a game member to perform this action");
             return;
         }
-        this.actualGames.get(guild).acceptPillowRequest(Who, ToWhom);
+        try {
+            this.actualGames.get(guild).acceptPillowRequest(Who, ToWhom);
+        }
+        catch (IllegalStateException e){
+            print(messageChannel, e.getMessage());
+            return;
+        }
+
         print(messageChannel, "" + Who.getMember().getNickname() + " передает подушку игроку "
                 + ToWhom.getMember().getNickname());
     }

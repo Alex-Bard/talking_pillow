@@ -22,6 +22,10 @@ public class MassageListener  extends ListenerAdapter {
         Guild guild = event.getGuild();
         Member member = event.getMember();
         MessageChannel messageChannel = event.getChannel();
+        if (member.getVoiceState().getChannel() == null){
+            messageChannel.sendMessage("Вы должны быть в голосовом канале").queue();
+            return;
+        }
 
 
         if (content.equals("!start")) {

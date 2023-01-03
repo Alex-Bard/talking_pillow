@@ -14,7 +14,7 @@ public class MicrophoneManager implements IMicrophoneManager {
     }
     public void changeMicrophoneStatuses(Map<Member,Boolean> micStatuses){
         for(Map.Entry<Member,Boolean> player : micStatuses.entrySet()){
-            player.getKey().mute(!player.getValue());
+            player.getKey().mute(!player.getValue()).queue();
         }
     }
 }
