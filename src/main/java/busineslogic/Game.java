@@ -38,8 +38,6 @@ public class Game implements IGame{
     public void addPlayer(@NotNull IPlayer player){
         player.setInGameStatus(EPlayerStatusType.LISTEN);
         players.put(player.getMember(), player);
-        gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-
     }
     @Override
     public void initGame(){
@@ -48,16 +46,13 @@ public class Game implements IGame{
         //todo add start timer
     }
     @Override
-    public void acceptGame(IPlayer whoAccept){
-        if (this.gameStatus == EGameStatusType.DENIED){
-            this.gameManager.print(messageChannel,"Игра отклонена");
-            return;
+    public void acceptGame(IPlayer whoAccept) throws IllegalStateException {
+        if (this.gameStatus != EGameStatusType.PENDING) {
+            throw new IllegalStateException("game status is " + this.gameStatus.name() + ", expected PENDING");
         }
-        else if(this.gameStatus == EGameStatusType.PENDING){
-            this.players.get(whoAccept.getMember()).setOutGameStatus(EPlayerStatusType.READY);
-            if (checkCanStart()){
-                startGame();
-            }
+        getPlayers().get(whoAccept.getMember()).setOutGameStatus(EPlayerStatusType.READY);
+        if (checkCanStart()) {
+            startGame();
         }
     }
 
@@ -78,10 +73,6 @@ public class Game implements IGame{
         for (Map.Entry<Member,IPlayer> player : players.entrySet()){
             player.getValue().setInGameStatus(EPlayerStatusType.TALKING);
         }
-        gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-        gameManager.print(messageChannel, "Игра закончена!");
-        gameManager.markGameNotActual(this);
-
     }
     protected void startGame(){
         gameStatus = EGameStatusType.GOING;
@@ -89,12 +80,17 @@ public class Game implements IGame{
             player.getValue().setInGameStatus(EPlayerStatusType.LISTEN);
         }
         owner.setInGameStatus(EPlayerStatusType.TALKING);
-        gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-        gameManager.print(messageChannel, "Игра началась!");
-        gameManager.print(messageChannel, "Подушка у " + owner.getMember().getNickname() + "!");
     }
     @Override
-    public void requestPillow(IPlayer who){
+    public boolean canRequestPillow(IPlayer who){
+        return getPlayer(who).getInGameStatus() == EPlayerStatusType.LISTEN;
+    }
+    @Override
+    public void requestPillow(IPlayer who)throws IllegalStateException{
+        if(getPlayer(who).getInGameStatus() != EPlayerStatusType.LISTEN){
+            throw new IllegalStateException("player has status " + getPlayer(who).getInGameStatus().name() +
+                    ", expected LISTEN");
+        }
         getPlayers().get(who.getMember()).setInGameStatus(EPlayerStatusType.WAIT_PILLOW);
     }
     @Override
@@ -102,21 +98,20 @@ public class Game implements IGame{
         getPlayers().get(who.getMember()).setInGameStatus(EPlayerStatusType.LISTEN);
     }
     @Override
+    public boolean canAcceptPillowRec(IPlayer who, IPlayer toWhom){
+        return getPlayer(who).getInGameStatus() != EPlayerStatusType.TALKING
+                && getPlayer(toWhom).getInGameStatus() != EPlayerStatusType.WAIT_PILLOW;
+    }
+    @Override
     public void acceptPillowRequest(IPlayer who, IPlayer toWhom) throws IllegalStateException{
         if (!isPlayerExists(who) && isPlayerExists(toWhom)){
             throw new IllegalStateException("Someone from players is not exists");
         }
-        if (getPlayer(who).getInGameStatus() != EPlayerStatusType.TALKING
-                && getPlayer(toWhom).getInGameStatus() != EPlayerStatusType.WAIT_PILLOW){
-            throw new IllegalStateException("someone from players has illegal state");
-        }
         getPlayer(who).setInGameStatus(EPlayerStatusType.LISTEN);
         getPlayer(toWhom).setInGameStatus(EPlayerStatusType.TALKING);
-        gameManager.changeMicrophoneStatuses(getMicrophoneStatuses());
-        gameManager.print(messageChannel, "" + who.getMember().getNickname()
-                + " передает подушку " + toWhom.getMember().getNickname());
     }
-    private Map<Member, Boolean> getMicrophoneStatuses(){
+    @Override
+    public Map<Member, Boolean> getMicrophoneStatuses(){
         Map<Member, Boolean> micStatuses = new HashMap<>();
         micStatuses.put(owner.getMember(),
                 owner.getInGameStatus() == EPlayerStatusType.TALKING ? true : false);
@@ -133,7 +128,9 @@ public class Game implements IGame{
         return gameStatus == EGameStatusType.PENDING
                 && getPlayers().size() == getNumOfStatuses(EPlayerStatusType.READY);
     }
-    protected int getNumOfStatuses(EPlayerStatusType Status){
+
+    @Override
+    public int getNumOfStatuses(EPlayerStatusType Status){
         int count = 0;
         for (Map.Entry<Member,IPlayer> player : getPlayers().entrySet()){
             if (player.getValue().getOutGameStatus() == Status){
@@ -192,6 +189,7 @@ public class Game implements IGame{
     public AudioChannelUnion getChannel() {
         return channel;
     }
+    @Override
     public EGameStatusType getGameStatus() {
         return gameStatus;
     }

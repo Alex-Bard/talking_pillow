@@ -18,17 +18,27 @@ public interface IGame {
 
     void resetVoteForStop(IPlayer player);
 
+    boolean canRequestPillow(IPlayer who);
+
     void requestPillow(IPlayer who);
 
     void resetRequestPillow(IPlayer who);
 
+    boolean canAcceptPillowRec(IPlayer who, IPlayer toWhom);
+
     void acceptPillowRequest(IPlayer who, IPlayer toWhom) throws IllegalStateException;
+
+    Map<Member, Boolean> getMicrophoneStatuses();
+
+    int getNumOfStatuses(EPlayerStatusType Status);
 
     IPlayer getOwner();
     Map<Member, IPlayer> getPlayers();
     IPlayer getTalker();
     Guild getGuild();
     AudioChannelUnion getChannel();
+
+    EGameStatusType getGameStatus();
     //todo add getter for time change pillow recipient
 
 }

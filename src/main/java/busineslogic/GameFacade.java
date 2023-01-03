@@ -20,7 +20,8 @@ public class GameFacade implements IGameFacade {
     private GameFacade(){};
 
     @Override
-    public void startGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner){
+    public void startGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner)
+            throws IllegalStateException {
         Map<Member, IPlayer> players = new HashMap();
         IPlayer ownerPlayer = new Player(owner);
         for (Member member : audioChannel.getMembers()) {
@@ -32,37 +33,37 @@ public class GameFacade implements IGameFacade {
     }
     @Override
     public void voteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
-                            Member whoVoted){
+                            Member whoVoted)  throws IllegalStateException {
         IPlayer player = new Player(whoVoted);
         this.gameManager.voteForStop(guild, channel, messageChannel, player);
     }
     @Override
     public void resetVoteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
-                                 Member whoVoted){
+                                 Member whoVoted) throws IllegalStateException {
         IPlayer player = new Player(whoVoted);
         this.gameManager.resetVoteForStop(guild, channel,messageChannel, player);
     }
     @Override
     public void acceptGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel,
-                           Member whoAccept){
+                           Member whoAccept) throws IllegalStateException {
         IPlayer player = new Player(whoAccept);
         this.gameManager.acceptGame(guild, audioChannel, messageChannel, player);
     }
     @Override
     public void requestPillow(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
-                              Member whoRequest){
+                              Member whoRequest) throws IllegalStateException {
         IPlayer player = new Player(whoRequest);
         this.gameManager.requestPillow(guild, channel,messageChannel, player);
     }
     @Override
     public void resetRequestPillow(Guild guild, AudioChannelUnion channel,MessageChannel messageChannel,
-                                   Member whoRequest){
+                                   Member whoRequest) throws IllegalStateException {
         IPlayer player = new Player(whoRequest);
         this.gameManager.resetRequestPillow(guild, channel,messageChannel, player);
     }
     @Override
     public void acceptPillowRequest(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
-                                    Member who, Member toWhom){
+                                    Member who, Member toWhom) throws IllegalStateException {
         IPlayer playerWho = new Player(who);
         IPlayer playerToWhom = new Player(toWhom);
         this.gameManager.acceptPillowRequest(guild, channel, messageChannel, playerWho, playerToWhom);

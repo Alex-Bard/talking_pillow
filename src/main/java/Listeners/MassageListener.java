@@ -27,36 +27,41 @@ public class MassageListener  extends ListenerAdapter {
             return;
         }
 
-
-        if (content.equals("!start")) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            gameFacade.startGame(guild, audioChannel, event.getChannel(), member);
-            //messageChannel.sendMessage("Pong!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
-        } else if (content.equals("!accept")) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            gameFacade.acceptGame(guild, audioChannel, event.getChannel(), member);
-            //event.getMember().deafen(false).queue();
-        } else if (content.equals("!stop")) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            gameFacade.voteForStop(guild, audioChannel, event.getChannel(), member);
-            //event.getMember().deafen(false).queue();
-        } else if (content.equals("!resetStop")) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            gameFacade.resetVoteForStop(guild, audioChannel, event.getChannel(), member);
-            //event.getMember().deafen(false).queue();
-        } else if (content.equals("!rec")) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            gameFacade.requestPillow(guild, audioChannel, event.getChannel(), member);
-            //event.getMember().deafen(false).queue();
-        } else if (content.equals("!resetRec")) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            gameFacade.resetRequestPillow(guild, audioChannel, event.getChannel(), member);
-            //event.getMember().deafen(false).queue();
-        } else if (content.contains("!acceptRec") && message.getMentions().getMembers().size() == 1) {
-            AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-            Member toWhom = message.getMentions().getMembers().get(0);
-            gameFacade.acceptPillowRequest(guild, audioChannel, event.getChannel(), toWhom, member);
-            event.getMember().deafen(false).queue();
+        try {
+            if (content.equals("!start")) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                gameFacade.startGame(guild, audioChannel, event.getChannel(), member);
+                //messageChannel.sendMessage("Pong!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
+            } else if (content.equals("!accept")) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                gameFacade.acceptGame(guild, audioChannel, event.getChannel(), member);
+                //event.getMember().deafen(false).queue();
+            } else if (content.equals("!stop")) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                gameFacade.voteForStop(guild, audioChannel, event.getChannel(), member);
+                //event.getMember().deafen(false).queue();
+            } else if (content.equals("!resetStop")) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                gameFacade.resetVoteForStop(guild, audioChannel, event.getChannel(), member);
+                //event.getMember().deafen(false).queue();
+            } else if (content.equals("!rec")) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                gameFacade.requestPillow(guild, audioChannel, event.getChannel(), member);
+                //event.getMember().deafen(false).queue();
+            } else if (content.equals("!resetRec")) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                gameFacade.resetRequestPillow(guild, audioChannel, event.getChannel(), member);
+                //event.getMember().deafen(false).queue();
+            } else if (content.contains("!acceptRec") && message.getMentions().getMembers().size() == 1) {
+                AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
+                Member toWhom = message.getMentions().getMembers().get(0);
+                gameFacade.acceptPillowRequest(guild, audioChannel, event.getChannel(), toWhom, member);
+                event.getMember().deafen(false).queue();
+            }
+        }
+        catch (IllegalStateException e){
+            e.printStackTrace();
+            messageChannel.sendMessage(e.getMessage()).queue();
         }
     }
 }
