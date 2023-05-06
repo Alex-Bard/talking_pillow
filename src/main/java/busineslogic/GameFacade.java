@@ -26,7 +26,7 @@ public class GameFacade implements IGameFacade {
     private GameFacade(){};
 
     @Override
-    public void startGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner)
+    public void createGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner)
             throws IllegalStateException {
         Map<Member, IPlayer> players = new HashMap();
         IPlayer ownerPlayer = new Player(owner,getMemberName(owner));
@@ -38,7 +38,7 @@ public class GameFacade implements IGameFacade {
                 logger.debug("Game player " + player.getName() + " was created");
             }
         }
-        logger.info("Starting game");
+        logger.info("Creating game");
         this.gameManager.startGame(guild, audioChannel, messageChannel, ownerPlayer, players);
     }
     @Override

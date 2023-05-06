@@ -7,7 +7,7 @@ import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 
 public interface IGameFacade {
 
-    void startGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner);
+    void createGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel, Member owner);
 
     void voteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
                      Member whoVoted);

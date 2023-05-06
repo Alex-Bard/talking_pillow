@@ -40,7 +40,7 @@ public class MessageListener extends ListenerAdapter {
                 logger.info("processing command START for member " + member.getNickname() == null ?
                         member.getUser().getName() :member.getNickname());
                 AudioChannelUnion audioChannel = member.getVoiceState().getChannel();
-                gameFacade.startGame(guild, audioChannel, event.getChannel(), member);
+                gameFacade.createGame(guild, audioChannel, event.getChannel(), member);
             } else if (content.equals("!accept")) {
                 logger.info("processing command ACCEPT for member " + member.getNickname() == null ?
                         member.getUser().getName() :member.getNickname());
