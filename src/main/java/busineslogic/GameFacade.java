@@ -45,30 +45,35 @@ public class GameFacade implements IGameFacade {
     public void voteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
                             Member whoVoted)  throws IllegalStateException {
         IPlayer player = new Player(whoVoted,getMemberName(whoVoted));
+        logger.info("Player " + player.getName() + " voting for stop");
         this.gameManager.voteForStop(guild, channel, messageChannel, player);
     }
     @Override
     public void resetVoteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
                                  Member whoVoted) throws IllegalStateException {
         IPlayer player = new Player(whoVoted,getMemberName(whoVoted));
+        logger.info("Player " + player.getName() + " stopped voting for stop");
         this.gameManager.resetVoteForStop(guild, channel,messageChannel, player);
     }
     @Override
     public void acceptGame(Guild guild, AudioChannelUnion audioChannel, MessageChannel messageChannel,
                            Member whoAccept) throws IllegalStateException {
         IPlayer player = new Player(whoAccept,getMemberName(whoAccept));
+        logger.info("Player " + player.getName() + " accepting game");
         this.gameManager.acceptGame(guild, audioChannel, messageChannel, player);
     }
     @Override
     public void requestPillow(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
                               Member whoRequest) throws IllegalStateException {
         IPlayer player = new Player(whoRequest,getMemberName(whoRequest));
+        logger.info("Player " + player.getName() + " requesting pillow");
         this.gameManager.requestPillow(guild, channel,messageChannel, player);
     }
     @Override
     public void resetRequestPillow(Guild guild, AudioChannelUnion channel,MessageChannel messageChannel,
                                    Member whoRequest) throws IllegalStateException {
         IPlayer player = new Player(whoRequest,getMemberName(whoRequest));
+        logger.info("Player " + player.getName() + " stopped requesting pillow");
         this.gameManager.resetRequestPillow(guild, channel,messageChannel, player);
     }
     @Override
@@ -76,6 +81,8 @@ public class GameFacade implements IGameFacade {
                                     Member who, Member toWhom) throws IllegalStateException {
         IPlayer playerWho = new Player(who,getMemberName(who));
         IPlayer playerToWhom = new Player(toWhom,getMemberName(toWhom));
+        logger.info("Player " + playerWho.getName() + " accepting pillow request from "
+                + playerToWhom.getName());
         this.gameManager.acceptPillowRequest(guild, channel, messageChannel, playerWho, playerToWhom);
     }
     protected String getMemberName(Member member){
