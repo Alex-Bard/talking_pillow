@@ -1,19 +1,25 @@
 package busineslogic;
 
+import Listeners.MessageListener;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameFacade implements IGameFacade {
     private static GameFacade instance;
+    private static final Logger logger = LoggerFactory.getLogger(GameFacade.class);
     private IGameManager gameManager = GameManager.getInstance();
     public static synchronized GameFacade getInstance() {
+        logger.info("GameFacade instance was requested");
         if (instance == null) {
             instance = new GameFacade();
+            logger.info("GameFacade instance was created");
         }
         return instance;
     }
@@ -24,11 +30,15 @@ public class GameFacade implements IGameFacade {
             throws IllegalStateException {
         Map<Member, IPlayer> players = new HashMap();
         IPlayer ownerPlayer = new Player(owner,getMemberName(owner));
+        logger.debug("Game owner " + ownerPlayer.getName() + " was created");
         for (Member member : audioChannel.getMembers()) {
             if (!member.equals(owner)) {
-                players.put(member, new Player(member,getMemberName(member)));
+                IPlayer player = new Player(member,getMemberName(member));
+                players.put(member, player);
+                logger.debug("Game player " + player.getName() + " was created");
             }
         }
+        logger.info("Starting game");
         this.gameManager.startGame(guild, audioChannel, messageChannel, ownerPlayer, players);
     }
     @Override
