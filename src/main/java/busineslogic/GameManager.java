@@ -5,6 +5,8 @@ import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
 import net.dv8tion.jda.api.entities.channel.unions.AudioChannelUnion;
 import org.apache.commons.collections4.map.HashedMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import view.IMicrophoneManager;
 import view.MicrophoneManager;
 
@@ -12,16 +14,20 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class GameManager implements IGameManager {
+    private static final Logger logger = LoggerFactory.getLogger(GameManager.class);
     private IMicrophoneManager microphoneManager = MicrophoneManager.getInstance();
     private Map<Guild, IGame> actualGames;
     private List<IGame> historyGames;
     private static GameManager instance;
 
     public static synchronized GameManager getInstance() {
+        logger.info("GameManager instance was requested");
         if (instance == null) {
             instance = new GameManager();
+            logger.info("GameManager instance was created");
         }
         return instance;
     }
@@ -39,7 +45,7 @@ public class GameManager implements IGameManager {
     @Override
     public void startGameForcibly(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel, IPlayer owner,
                                   Map<Member, IPlayer> players) throws IllegalStateException {
-        startGame(guild, channel, messageChannel, owner, players);
+        createGame(guild, channel, messageChannel, owner, players);
         for (Map.Entry<Member, IPlayer> player : players.entrySet()) {
             acceptGame(guild, channel, messageChannel, player.getValue());
         }
@@ -47,13 +53,18 @@ public class GameManager implements IGameManager {
     }
 
     @Override
-    public void startGame(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
-                          IPlayer owner, Map<Member, IPlayer> players) throws IllegalStateException {
+    public void createGame(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                           IPlayer owner, Map<Member, IPlayer> players) throws IllegalStateException {
+        logger.info("Creating game");
+        logger.debug("Creating game with owner " + owner.getName() + " and players " + players.values().stream()
+                .map(p -> p.getName()).collect(Collectors.joining(", "))); //check this
         if (actualGames.containsKey(guild)) {
+            logger.info("Game is already on, returning");
             print(messageChannel, "game is already on!");
             return;
         }
         if (players.size() == 0) {
+            logger.info("No players in game, returning");
             print(messageChannel, "You need at least 2 players to start the game");
             return;
         }
@@ -61,8 +72,8 @@ public class GameManager implements IGameManager {
         game.initGame();
 
         this.actualGames.put(guild, game);
+        logger.info("Game was created");
         print(messageChannel, "Игра создана. Ожидается подтверждение других игроков!");
-
     }
 
     @Override
@@ -81,6 +92,7 @@ public class GameManager implements IGameManager {
 
     @Override
     public void print(MessageChannel messageChannel, String text) {
+        logger.info("printing message: " + text + " with id " + messageChannel.getLatestMessageId());
         messageChannel.sendMessage(text).queue();
     }
 

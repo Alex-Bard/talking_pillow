@@ -13,8 +13,8 @@ public interface IGameManager {
     void startGameForcibly(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel, IPlayer owner,
                            Map<Member, IPlayer> players) throws IllegalStateException;
 
-    void startGame(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
-                   IPlayer owner, Map<Member, IPlayer> players) throws IllegalStateException;
+    void createGame(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
+                    IPlayer owner, Map<Member, IPlayer> players) throws IllegalStateException;
 
     //always check users connecting to avoid problems with mute.
     void connectUserToChannel(Guild guild, AudioChannelUnion channel, IPlayer player)

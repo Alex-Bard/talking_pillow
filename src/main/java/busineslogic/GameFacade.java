@@ -1,6 +1,5 @@
 package busineslogic;
 
-import Listeners.MessageListener;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.entities.channel.middleman.MessageChannel;
@@ -39,7 +38,7 @@ public class GameFacade implements IGameFacade {
             }
         }
         logger.info("Creating game");
-        this.gameManager.startGame(guild, audioChannel, messageChannel, ownerPlayer, players);
+        this.gameManager.createGame(guild, audioChannel, messageChannel, ownerPlayer, players);
     }
     @Override
     public void voteForStop(Guild guild, AudioChannelUnion channel, MessageChannel messageChannel,
