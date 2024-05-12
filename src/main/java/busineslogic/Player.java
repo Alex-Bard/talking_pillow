@@ -2,13 +2,21 @@ package busineslogic;
 import net.dv8tion.jda.api.entities.Member;
 
 import java.util.Objects;
-
+/**
+ * This class represents a player.
+ */
 public class Player implements IPlayer{
-    private  Member member;
+    private Member member;
     private EPlayerStatusType inGameStatus;
     private EPlayerStatusType outGameStatus;
-    private String name;
+    /**
+     * The name of the player.
+     */
 
+    private String name;
+    /**
+     * @return The name of the player.
+     */
     @Override
     public String getName() {
         return name;

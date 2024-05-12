@@ -1,0 +1,115 @@
+\doxysection{busineslogic.\+Game\+Facade Class Reference}
+\hypertarget{classbusineslogic_1_1_game_facade}{}\label{classbusineslogic_1_1_game_facade}\index{busineslogic.GameFacade@{busineslogic.GameFacade}}
+Inheritance diagram for busineslogic.\+Game\+Facade\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbusineslogic_1_1_game_facade}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_ac9710d0c2f7a415757bebf6c75dce779}{create\+Game}} (Guild guild, Audio\+Channel\+Union audio\+Channel, Message\+Channel message\+Channel, Member owner)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_aef06f7c3ea2621c9ef12e029ad11d587}{vote\+For\+Stop}} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, Member who\+Voted)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_a90b9e989b3e49f2e324e140ab69d4df0}{reset\+Vote\+For\+Stop}} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, Member who\+Voted)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_aaca60c34e68238da565b6778e02ba028}{accept\+Game}} (Guild guild, Audio\+Channel\+Union audio\+Channel, Message\+Channel message\+Channel, Member who\+Accept)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_a7114e98eb3d31fdacd5677ff32613668}{request\+Pillow}} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, Member who\+Request)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_ae011756560fdcbce72069794b811d03c}{reset\+Request\+Pillow}} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, Member who\+Request)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_facade_afdc65818b02314ac2ae3918e92571855}{accept\+Pillow\+Request}} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, Member who, Member to\+Whom)  throws Illegal\+State\+Exception 
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classbusineslogic_1_1_game_facade_a08fbb9c45765f33082908861ab24d031}\label{classbusineslogic_1_1_game_facade_a08fbb9c45765f33082908861ab24d031} 
+static synchronized \mbox{\hyperlink{classbusineslogic_1_1_game_facade}{Game\+Facade}} {\bfseries get\+Instance} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classbusineslogic_1_1_game_facade_a2c80e9e067c4fdb6346adca57ab375ff}\label{classbusineslogic_1_1_game_facade_a2c80e9e067c4fdb6346adca57ab375ff} 
+String {\bfseries get\+Member\+Name} (Member member)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbusineslogic_1_1_game_facade_aaca60c34e68238da565b6778e02ba028}\label{classbusineslogic_1_1_game_facade_aaca60c34e68238da565b6778e02ba028} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!acceptGame@{acceptGame}}
+\index{acceptGame@{acceptGame}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{acceptGame()}{acceptGame()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+accept\+Game (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{audio\+Channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{who\+Accept }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+\Hypertarget{classbusineslogic_1_1_game_facade_afdc65818b02314ac2ae3918e92571855}\label{classbusineslogic_1_1_game_facade_afdc65818b02314ac2ae3918e92571855} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!acceptPillowRequest@{acceptPillowRequest}}
+\index{acceptPillowRequest@{acceptPillowRequest}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{acceptPillowRequest()}{acceptPillowRequest()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+accept\+Pillow\+Request (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{who,  }\item[{Member}]{to\+Whom }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+\Hypertarget{classbusineslogic_1_1_game_facade_ac9710d0c2f7a415757bebf6c75dce779}\label{classbusineslogic_1_1_game_facade_ac9710d0c2f7a415757bebf6c75dce779} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!createGame@{createGame}}
+\index{createGame@{createGame}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{createGame()}{createGame()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+create\+Game (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{audio\+Channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{owner }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+\Hypertarget{classbusineslogic_1_1_game_facade_a7114e98eb3d31fdacd5677ff32613668}\label{classbusineslogic_1_1_game_facade_a7114e98eb3d31fdacd5677ff32613668} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!requestPillow@{requestPillow}}
+\index{requestPillow@{requestPillow}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{requestPillow()}{requestPillow()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+request\+Pillow (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{who\+Request }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+\Hypertarget{classbusineslogic_1_1_game_facade_ae011756560fdcbce72069794b811d03c}\label{classbusineslogic_1_1_game_facade_ae011756560fdcbce72069794b811d03c} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!resetRequestPillow@{resetRequestPillow}}
+\index{resetRequestPillow@{resetRequestPillow}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{resetRequestPillow()}{resetRequestPillow()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+reset\+Request\+Pillow (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{who\+Request }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+\Hypertarget{classbusineslogic_1_1_game_facade_a90b9e989b3e49f2e324e140ab69d4df0}\label{classbusineslogic_1_1_game_facade_a90b9e989b3e49f2e324e140ab69d4df0} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!resetVoteForStop@{resetVoteForStop}}
+\index{resetVoteForStop@{resetVoteForStop}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{resetVoteForStop()}{resetVoteForStop()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+reset\+Vote\+For\+Stop (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{who\+Voted }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+\Hypertarget{classbusineslogic_1_1_game_facade_aef06f7c3ea2621c9ef12e029ad11d587}\label{classbusineslogic_1_1_game_facade_aef06f7c3ea2621c9ef12e029ad11d587} 
+\index{busineslogic.GameFacade@{busineslogic.GameFacade}!voteForStop@{voteForStop}}
+\index{voteForStop@{voteForStop}!busineslogic.GameFacade@{busineslogic.GameFacade}}
+\doxysubsubsection{\texorpdfstring{voteForStop()}{voteForStop()}}
+{\footnotesize\ttfamily void busineslogic.\+Game\+Facade.\+vote\+For\+Stop (\begin{DoxyParamCaption}\item[{Guild}]{guild,  }\item[{Audio\+Channel\+Union}]{channel,  }\item[{Message\+Channel}]{message\+Channel,  }\item[{Member}]{who\+Voted }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game_facade}{busineslogic.\+IGame\+Facade}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/busineslogic/Game\+Facade.\+java\end{DoxyCompactItemize}

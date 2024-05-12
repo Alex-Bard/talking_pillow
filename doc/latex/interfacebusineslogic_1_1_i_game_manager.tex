@@ -1,0 +1,55 @@
+\doxysection{busineslogic.\+IGame\+Manager Interface Reference}
+\hypertarget{interfacebusineslogic_1_1_i_game_manager}{}\label{interfacebusineslogic_1_1_i_game_manager}\index{busineslogic.IGameManager@{busineslogic.IGameManager}}
+Inheritance diagram for busineslogic.\+IGame\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacebusineslogic_1_1_i_game_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a4631ee4c9c920a9b98ee675c7d8b737b}\label{interfacebusineslogic_1_1_i_game_manager_a4631ee4c9c920a9b98ee675c7d8b737b} 
+\mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{IGame}} {\bfseries get\+Game} (Guild guild)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a0c17274d723c85076c3b4a95d889c13b}\label{interfacebusineslogic_1_1_i_game_manager_a0c17274d723c85076c3b4a95d889c13b} 
+void {\bfseries start\+Game\+Forcibly} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} owner, Map$<$ Member, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} $>$ players)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a5a15b7b03345e69e7f660d134b2640e3}\label{interfacebusineslogic_1_1_i_game_manager_a5a15b7b03345e69e7f660d134b2640e3} 
+void {\bfseries create\+Game} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} owner, Map$<$ Member, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} $>$ players)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a58aead4582d4ee07114bdaabbc9759bd}\label{interfacebusineslogic_1_1_i_game_manager_a58aead4582d4ee07114bdaabbc9759bd} 
+void {\bfseries connect\+User\+To\+Channel} (Guild guild, Audio\+Channel\+Union channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a675b03c63ef85b92908ce519fa597160}\label{interfacebusineslogic_1_1_i_game_manager_a675b03c63ef85b92908ce519fa597160} 
+void {\bfseries print} (Message\+Channel message\+Channel, String text)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a95cd6e99305f9a179ab0230be9020455}\label{interfacebusineslogic_1_1_i_game_manager_a95cd6e99305f9a179ab0230be9020455} 
+void {\bfseries vote\+For\+Stop} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_aab72cf9e5a9988e31c5f288135c1e006}\label{interfacebusineslogic_1_1_i_game_manager_aab72cf9e5a9988e31c5f288135c1e006} 
+void {\bfseries reset\+Vote\+For\+Stop} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who\+Voted)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_ab2d04ec095d6cbd95e122dd3284235ca}\label{interfacebusineslogic_1_1_i_game_manager_ab2d04ec095d6cbd95e122dd3284235ca} 
+void {\bfseries accept\+Game} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who\+Accept)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a77fe440a8d8f4947cff583f19c61df3a}\label{interfacebusineslogic_1_1_i_game_manager_a77fe440a8d8f4947cff583f19c61df3a} 
+void {\bfseries request\+Pillow} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who\+Request)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a86b1d5c3f4ef9610596ae4362b38ea00}\label{interfacebusineslogic_1_1_i_game_manager_a86b1d5c3f4ef9610596ae4362b38ea00} 
+void {\bfseries reset\+Request\+Pillow} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who\+Request)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a47c35e89d3d1d61e1ccbe5bd0417634d}\label{interfacebusineslogic_1_1_i_game_manager_a47c35e89d3d1d61e1ccbe5bd0417634d} 
+void {\bfseries accept\+Pillow\+Request} (Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} Who, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} To\+Whom)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a4891282b7d44450bcef586bd697d48f2}\label{interfacebusineslogic_1_1_i_game_manager_a4891282b7d44450bcef586bd697d48f2} 
+void {\bfseries change\+Microphone\+Statuses} (Map$<$ Member, Boolean $>$ mic\+Statuses)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_manager_a8c6d0775d6e29d82426e8105d0c449e8}\label{interfacebusineslogic_1_1_i_game_manager_a8c6d0775d6e29d82426e8105d0c449e8} 
+void {\bfseries mark\+Game\+Not\+Actual} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{IGame}} game)
+\end{DoxyCompactItemize}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/busineslogic/IGame\+Manager.\+java\end{DoxyCompactItemize}

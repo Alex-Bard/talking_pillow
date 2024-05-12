@@ -1,0 +1,70 @@
+\doxysection{busineslogic.\+IGame Interface Reference}
+\hypertarget{interfacebusineslogic_1_1_i_game}{}\label{interfacebusineslogic_1_1_i_game}\index{busineslogic.IGame@{busineslogic.IGame}}
+Inheritance diagram for busineslogic.\+IGame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interfacebusineslogic_1_1_i_game}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_ab73050cddeb9efd3ed0ccb7610697b92}\label{interfacebusineslogic_1_1_i_game_ab73050cddeb9efd3ed0ccb7610697b92} 
+void {\bfseries add\+Player} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a10ca8eb2fecd7468b216b64d1e53fb76}\label{interfacebusineslogic_1_1_i_game_a10ca8eb2fecd7468b216b64d1e53fb76} 
+void {\bfseries init\+Game} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a69b3b8c3bc4b5f57e45c11ad097ffd93}\label{interfacebusineslogic_1_1_i_game_a69b3b8c3bc4b5f57e45c11ad097ffd93} 
+void {\bfseries accept\+Game} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who\+Accept)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_aea9ce109c0b6cc1ca302b9f750b18afe}\label{interfacebusineslogic_1_1_i_game_aea9ce109c0b6cc1ca302b9f750b18afe} 
+void {\bfseries vote\+For\+Stop} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_ad1b638075107659e45b3d90c4e14f09e}\label{interfacebusineslogic_1_1_i_game_ad1b638075107659e45b3d90c4e14f09e} 
+void {\bfseries reset\+Vote\+For\+Stop} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_ae7fd69c06c8a0748a1a45529b803d949}\label{interfacebusineslogic_1_1_i_game_ae7fd69c06c8a0748a1a45529b803d949} 
+boolean {\bfseries can\+Request\+Pillow} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a5f292d57f8af63a9099683b660586b73}\label{interfacebusineslogic_1_1_i_game_a5f292d57f8af63a9099683b660586b73} 
+void {\bfseries request\+Pillow} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a3fdfae8a86fd0feaef7d50dc3c2ecee3}\label{interfacebusineslogic_1_1_i_game_a3fdfae8a86fd0feaef7d50dc3c2ecee3} 
+void {\bfseries reset\+Request\+Pillow} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_ade8e506c8819a5026267e556471fae8f}\label{interfacebusineslogic_1_1_i_game_ade8e506c8819a5026267e556471fae8f} 
+boolean {\bfseries can\+Accept\+Pillow\+Rec} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} to\+Whom)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_ac47200c44e8390f29f78aca33e8d7c93}\label{interfacebusineslogic_1_1_i_game_ac47200c44e8390f29f78aca33e8d7c93} 
+void {\bfseries accept\+Pillow\+Request} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} to\+Whom)  throws Illegal\+State\+Exception
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a408d45b8beb9f388f8aab7d5d8eae454}\label{interfacebusineslogic_1_1_i_game_a408d45b8beb9f388f8aab7d5d8eae454} 
+Map$<$ Member, Boolean $>$ {\bfseries get\+Microphone\+Statuses} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a41ccd4b10a7922f990ad2f3b820b529b}\label{interfacebusineslogic_1_1_i_game_a41ccd4b10a7922f990ad2f3b820b529b} 
+int {\bfseries get\+Num\+Of\+Statuses} (\mbox{\hyperlink{enumbusineslogic_1_1_e_player_status_type}{EPlayer\+Status\+Type}} Status)
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a2927014d7f23da76b3a738b3a63301bc}\label{interfacebusineslogic_1_1_i_game_a2927014d7f23da76b3a738b3a63301bc} 
+\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} {\bfseries get\+Owner} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a31ba2578d0941300ec0bcb754621cdc6}\label{interfacebusineslogic_1_1_i_game_a31ba2578d0941300ec0bcb754621cdc6} 
+Map$<$ Member, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} $>$ {\bfseries get\+Players} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a1cfa9a288428577fbf3a5789806b661f}\label{interfacebusineslogic_1_1_i_game_a1cfa9a288428577fbf3a5789806b661f} 
+\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} {\bfseries get\+Talker} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a0471f9a0304770acac7c649981db68be}\label{interfacebusineslogic_1_1_i_game_a0471f9a0304770acac7c649981db68be} 
+Guild {\bfseries get\+Guild} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_adf9c3d08e25c4c45733ea71ef95b31c8}\label{interfacebusineslogic_1_1_i_game_adf9c3d08e25c4c45733ea71ef95b31c8} 
+Audio\+Channel\+Union {\bfseries get\+Channel} ()
+\item 
+\Hypertarget{interfacebusineslogic_1_1_i_game_a22a3d84cee9720fc731e9f7f426ff467}\label{interfacebusineslogic_1_1_i_game_a22a3d84cee9720fc731e9f7f426ff467} 
+\mbox{\hyperlink{enumbusineslogic_1_1_e_game_status_type}{EGame\+Status\+Type}} {\bfseries get\+Game\+Status} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/busineslogic/IGame.\+java\end{DoxyCompactItemize}

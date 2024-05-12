@@ -1,0 +1,246 @@
+\doxysection{busineslogic.\+Game Class Reference}
+\hypertarget{classbusineslogic_1_1_game}{}\label{classbusineslogic_1_1_game}\index{busineslogic.Game@{busineslogic.Game}}
+Inheritance diagram for busineslogic.\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classbusineslogic_1_1_game}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classbusineslogic_1_1_game_a356dc676c8c4219d6ff2d2e255e4f5ce}\label{classbusineslogic_1_1_game_a356dc676c8c4219d6ff2d2e255e4f5ce} 
+{\bfseries Game} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_game_manager}{IGame\+Manager}} game\+Manager, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} owner, Map$<$ Member, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} $>$ players, Guild guild, Audio\+Channel\+Union channel, Message\+Channel message\+Channel)
+\item 
+\Hypertarget{classbusineslogic_1_1_game_af9da23e0a5b944845bfc5efd75509a63}\label{classbusineslogic_1_1_game_af9da23e0a5b944845bfc5efd75509a63} 
+void {\bfseries add\+Player} (@Not\+Null \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_a013550878d280e8c83ed94ae5e482f12}{init\+Game}} ()
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_af48ac8851203ce1e4a103e7b8ea46455}{accept\+Game}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who\+Accept)  throws Illegal\+State\+Exception 
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_a4579edbe6440dd6252dd5e622c815387}{vote\+For\+Stop}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_a64875b3c9147ba34e3b4c08372e280d5}{reset\+Vote\+For\+Stop}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\item 
+boolean \mbox{\hyperlink{classbusineslogic_1_1_game_a3c544a6f6921f46b18554b6d36e27902}{can\+Request\+Pillow}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who)
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_a7b25a8e7fab8a6a44bdc3bbbfddbb1f2}{request\+Pillow}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who)  throws Illegal\+State\+Exception
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_a059ed20dbbde1d2cb12a3255468d1b45}{reset\+Request\+Pillow}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who)
+\item 
+boolean \mbox{\hyperlink{classbusineslogic_1_1_game_aca18391f40b6c0dc804033c302e8d5aa}{can\+Accept\+Pillow\+Rec}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} to\+Whom)
+\item 
+void \mbox{\hyperlink{classbusineslogic_1_1_game_ac556e0cb55008d70b9f84e05f27168a0}{accept\+Pillow\+Request}} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} who, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} to\+Whom)  throws Illegal\+State\+Exception
+\item 
+Map$<$ Member, Boolean $>$ \mbox{\hyperlink{classbusineslogic_1_1_game_a83feecdb8ddcad1f5379466c9189a6aa}{get\+Microphone\+Statuses}} ()
+\item 
+int \mbox{\hyperlink{classbusineslogic_1_1_game_a90a8c9b4c6dfeaa425dcb0e86da3281e}{get\+Num\+Of\+Statuses}} (\mbox{\hyperlink{enumbusineslogic_1_1_e_player_status_type}{EPlayer\+Status\+Type}} Status)
+\item 
+\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} \mbox{\hyperlink{classbusineslogic_1_1_game_af7939551b0ef6c24e8b5f7cbcd02391d}{get\+Owner}} ()
+\item 
+Map$<$ Member, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} $>$ \mbox{\hyperlink{classbusineslogic_1_1_game_aff6982a074e3bdc9366361913aa6f6b5}{get\+Players}} ()
+\item 
+\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} \mbox{\hyperlink{classbusineslogic_1_1_game_a58bfa5e3dcfb2bc97fe45259fec68984}{get\+Talker}} ()
+\item 
+Guild \mbox{\hyperlink{classbusineslogic_1_1_game_a49678276c4f987ea40fe65b651a6d182}{get\+Guild}} ()
+\item 
+Audio\+Channel\+Union \mbox{\hyperlink{classbusineslogic_1_1_game_aa00d438a8f023054f65537faabd87ceb}{get\+Channel}} ()
+\item 
+\mbox{\hyperlink{enumbusineslogic_1_1_e_game_status_type}{EGame\+Status\+Type}} \mbox{\hyperlink{classbusineslogic_1_1_game_a0b885dbc8fd7b2907fc5248d3aad7e67}{get\+Game\+Status}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries add\+Player} (\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} player)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classbusineslogic_1_1_game_a40583993bf8208896a183db7db8c15fb}\label{classbusineslogic_1_1_game_a40583993bf8208896a183db7db8c15fb} 
+void {\bfseries init\+Players\+Statuses} ()
+\item 
+\Hypertarget{classbusineslogic_1_1_game_a445b67f5887766a03144baac11a64eda}\label{classbusineslogic_1_1_game_a445b67f5887766a03144baac11a64eda} 
+void {\bfseries start\+Game} ()
+\item 
+\Hypertarget{classbusineslogic_1_1_game_a9cda423acfcbbc5429680678bc25fffc}\label{classbusineslogic_1_1_game_a9cda423acfcbbc5429680678bc25fffc} 
+boolean {\bfseries check\+Can\+Start} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classbusineslogic_1_1_game_af48ac8851203ce1e4a103e7b8ea46455}\label{classbusineslogic_1_1_game_af48ac8851203ce1e4a103e7b8ea46455} 
+\index{busineslogic.Game@{busineslogic.Game}!acceptGame@{acceptGame}}
+\index{acceptGame@{acceptGame}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{acceptGame()}{acceptGame()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+accept\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{who\+Accept }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_ac556e0cb55008d70b9f84e05f27168a0}\label{classbusineslogic_1_1_game_ac556e0cb55008d70b9f84e05f27168a0} 
+\index{busineslogic.Game@{busineslogic.Game}!acceptPillowRequest@{acceptPillowRequest}}
+\index{acceptPillowRequest@{acceptPillowRequest}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{acceptPillowRequest()}{acceptPillowRequest()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+accept\+Pillow\+Request (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{who,  }\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{to\+Whom }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_aca18391f40b6c0dc804033c302e8d5aa}\label{classbusineslogic_1_1_game_aca18391f40b6c0dc804033c302e8d5aa} 
+\index{busineslogic.Game@{busineslogic.Game}!canAcceptPillowRec@{canAcceptPillowRec}}
+\index{canAcceptPillowRec@{canAcceptPillowRec}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{canAcceptPillowRec()}{canAcceptPillowRec()}}
+{\footnotesize\ttfamily boolean busineslogic.\+Game.\+can\+Accept\+Pillow\+Rec (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{who,  }\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{to\+Whom }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a3c544a6f6921f46b18554b6d36e27902}\label{classbusineslogic_1_1_game_a3c544a6f6921f46b18554b6d36e27902} 
+\index{busineslogic.Game@{busineslogic.Game}!canRequestPillow@{canRequestPillow}}
+\index{canRequestPillow@{canRequestPillow}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{canRequestPillow()}{canRequestPillow()}}
+{\footnotesize\ttfamily boolean busineslogic.\+Game.\+can\+Request\+Pillow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{who }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_aa00d438a8f023054f65537faabd87ceb}\label{classbusineslogic_1_1_game_aa00d438a8f023054f65537faabd87ceb} 
+\index{busineslogic.Game@{busineslogic.Game}!getChannel@{getChannel}}
+\index{getChannel@{getChannel}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getChannel()}{getChannel()}}
+{\footnotesize\ttfamily Audio\+Channel\+Union busineslogic.\+Game.\+get\+Channel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a0b885dbc8fd7b2907fc5248d3aad7e67}\label{classbusineslogic_1_1_game_a0b885dbc8fd7b2907fc5248d3aad7e67} 
+\index{busineslogic.Game@{busineslogic.Game}!getGameStatus@{getGameStatus}}
+\index{getGameStatus@{getGameStatus}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getGameStatus()}{getGameStatus()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumbusineslogic_1_1_e_game_status_type}{EGame\+Status\+Type}} busineslogic.\+Game.\+get\+Game\+Status (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a49678276c4f987ea40fe65b651a6d182}\label{classbusineslogic_1_1_game_a49678276c4f987ea40fe65b651a6d182} 
+\index{busineslogic.Game@{busineslogic.Game}!getGuild@{getGuild}}
+\index{getGuild@{getGuild}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getGuild()}{getGuild()}}
+{\footnotesize\ttfamily Guild busineslogic.\+Game.\+get\+Guild (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a83feecdb8ddcad1f5379466c9189a6aa}\label{classbusineslogic_1_1_game_a83feecdb8ddcad1f5379466c9189a6aa} 
+\index{busineslogic.Game@{busineslogic.Game}!getMicrophoneStatuses@{getMicrophoneStatuses}}
+\index{getMicrophoneStatuses@{getMicrophoneStatuses}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getMicrophoneStatuses()}{getMicrophoneStatuses()}}
+{\footnotesize\ttfamily Map$<$ Member, Boolean $>$ busineslogic.\+Game.\+get\+Microphone\+Statuses (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a90a8c9b4c6dfeaa425dcb0e86da3281e}\label{classbusineslogic_1_1_game_a90a8c9b4c6dfeaa425dcb0e86da3281e} 
+\index{busineslogic.Game@{busineslogic.Game}!getNumOfStatuses@{getNumOfStatuses}}
+\index{getNumOfStatuses@{getNumOfStatuses}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getNumOfStatuses()}{getNumOfStatuses()}}
+{\footnotesize\ttfamily int busineslogic.\+Game.\+get\+Num\+Of\+Statuses (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumbusineslogic_1_1_e_player_status_type}{EPlayer\+Status\+Type}}}]{Status }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_af7939551b0ef6c24e8b5f7cbcd02391d}\label{classbusineslogic_1_1_game_af7939551b0ef6c24e8b5f7cbcd02391d} 
+\index{busineslogic.Game@{busineslogic.Game}!getOwner@{getOwner}}
+\index{getOwner@{getOwner}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getOwner()}{getOwner()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} busineslogic.\+Game.\+get\+Owner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_aff6982a074e3bdc9366361913aa6f6b5}\label{classbusineslogic_1_1_game_aff6982a074e3bdc9366361913aa6f6b5} 
+\index{busineslogic.Game@{busineslogic.Game}!getPlayers@{getPlayers}}
+\index{getPlayers@{getPlayers}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getPlayers()}{getPlayers()}}
+{\footnotesize\ttfamily Map$<$ Member, \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} $>$ busineslogic.\+Game.\+get\+Players (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a58bfa5e3dcfb2bc97fe45259fec68984}\label{classbusineslogic_1_1_game_a58bfa5e3dcfb2bc97fe45259fec68984} 
+\index{busineslogic.Game@{busineslogic.Game}!getTalker@{getTalker}}
+\index{getTalker@{getTalker}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{getTalker()}{getTalker()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}} busineslogic.\+Game.\+get\+Talker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a013550878d280e8c83ed94ae5e482f12}\label{classbusineslogic_1_1_game_a013550878d280e8c83ed94ae5e482f12} 
+\index{busineslogic.Game@{busineslogic.Game}!initGame@{initGame}}
+\index{initGame@{initGame}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+init\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a7b25a8e7fab8a6a44bdc3bbbfddbb1f2}\label{classbusineslogic_1_1_game_a7b25a8e7fab8a6a44bdc3bbbfddbb1f2} 
+\index{busineslogic.Game@{busineslogic.Game}!requestPillow@{requestPillow}}
+\index{requestPillow@{requestPillow}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{requestPillow()}{requestPillow()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+request\+Pillow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{who }\end{DoxyParamCaption}) throws Illegal\+State\+Exception\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a059ed20dbbde1d2cb12a3255468d1b45}\label{classbusineslogic_1_1_game_a059ed20dbbde1d2cb12a3255468d1b45} 
+\index{busineslogic.Game@{busineslogic.Game}!resetRequestPillow@{resetRequestPillow}}
+\index{resetRequestPillow@{resetRequestPillow}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{resetRequestPillow()}{resetRequestPillow()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+reset\+Request\+Pillow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{who }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a64875b3c9147ba34e3b4c08372e280d5}\label{classbusineslogic_1_1_game_a64875b3c9147ba34e3b4c08372e280d5} 
+\index{busineslogic.Game@{busineslogic.Game}!resetVoteForStop@{resetVoteForStop}}
+\index{resetVoteForStop@{resetVoteForStop}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{resetVoteForStop()}{resetVoteForStop()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+reset\+Vote\+For\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+\Hypertarget{classbusineslogic_1_1_game_a4579edbe6440dd6252dd5e622c815387}\label{classbusineslogic_1_1_game_a4579edbe6440dd6252dd5e622c815387} 
+\index{busineslogic.Game@{busineslogic.Game}!voteForStop@{voteForStop}}
+\index{voteForStop@{voteForStop}!busineslogic.Game@{busineslogic.Game}}
+\doxysubsubsection{\texorpdfstring{voteForStop()}{voteForStop()}}
+{\footnotesize\ttfamily void busineslogic.\+Game.\+vote\+For\+Stop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{interfacebusineslogic_1_1_i_player}{IPlayer}}}]{player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implements \mbox{\hyperlink{interfacebusineslogic_1_1_i_game}{busineslogic.\+IGame}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/busineslogic/Game.\+java\end{DoxyCompactItemize}
