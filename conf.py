@@ -18,14 +18,16 @@ extensions = []
 templates_path = ['_templates']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# -- Custom configuration for Doxygen integration ----------------------------
+# Execute Doxygen command to generate documentation
+import subprocess
+subprocess.call('cd .. ; doxygen', shell=True)
 
+# Update HTML extra path to include Doxygen documentation
+html_extra_path = ['../doc/build/html']
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'alabaster'
 html_static_path = ['_static']
-html_extra_path = ['docs/html']
-
-import subprocess
- subprocess.call('cd .. ; doxygen', shell=True)
